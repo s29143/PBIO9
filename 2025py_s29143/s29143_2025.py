@@ -20,7 +20,7 @@ def calculate_statistics(sequence):
     percentage_g = (g_count / total) * 100
     percentage_t = (t_count / total) * 100
 
-    cg_at_ratio = (c_count + g_count) / (a_count + t_count) if (a_count + t_count) != 0 else 0
+    cg_at_ratio = ((c_count + g_count) / total) * 100
 
     return {
         'A': percentage_a,
@@ -54,11 +54,11 @@ def main():
     # Generowanie losowej sekwencji DNA
     dna_sequence = generate_dna_sequence(length)
 
+    # Obliczanie statystyk
+    stats = calculate_statistics(dna_sequence)
+
     # Wstawianie imienia do sekwencji
     dna_with_name = insert_name(dna_sequence, name)
-
-    # Obliczanie statystyk
-    stats = calculate_statistics(dna_with_name)
 
     # Wyświetlanie statystyk
     print("\nStatystyki sekwencji:")
